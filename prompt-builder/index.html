@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Prompt Builder for Cold Email | ChatGPT & Claude | Overloop</title>
+<meta name="description" content="Build ChatGPT and Claude prompts for sales outreach in 30 seconds. Pick goal, target, channel. 7-part expert framework. Copy and paste. Free, no signup.">
+<link rel="canonical" href="https://tools.overloop.com/prompt-builder/">
+<link rel="alternate" hreflang="en" href="https://tools.overloop.com/prompt-builder/">
+<link rel="alternate" hreflang="x-default" href="https://tools.overloop.com/prompt-builder/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<style>
+:root{--primary:#7C3AED;--primary-dark:#6D28D9;--primary-light:#A78BFA;--primary-ultra-light:#EDE9FE;--primary-faint:#F5F3FF;--bg:#FAFAFA;--surface:#F3F4F6;--white:#FFFFFF;--border:#E5E7EB;--border-light:#F3F4F6;--text:#1F2937;--text2:#6B7280;--muted:#9CA3AF;--ok:#10B981;--warn:#F59E0B;--danger:#EF4444;--mono:'JetBrains Mono',monospace;--sans:'Epilogue',-apple-system,BlinkMacSystemFont,sans-serif;--shadow-md:0 4px 6px -1px rgba(0,0,0,0.1),0 2px 4px -1px rgba(0,0,0,0.06);--shadow-lg:0 10px 15px -3px rgba(0,0,0,0.1),0 4px 6px -2px rgba(0,0,0,0.05);--shadow-xl:0 20px 25px -5px rgba(0,0,0,0.1),0 10px 10px -5px rgba(0,0,0,0.04);--shadow-glow:0 0 40px rgba(124,58,237,0.25);--r:0.75rem;--r-xl:1rem;--r-2xl:1.5rem}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);color:var(--text);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+.page{max-width:1200px;margin:0 auto;padding:0 16px}
+@media(min-width:640px){.page{padding:0 48px}}
+.nav{display:flex;align-items:center;gap:.75rem;padding:0 16px;height:60px;border-bottom:1px solid var(--border-light);margin-bottom:32px;position:sticky;top:0;background:rgba(255,255,255,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);z-index:100}
+@media(min-width:640px){.nav{padding:0 48px;height:72px;gap:2rem;margin-bottom:48px}}
+.nav-logo{flex-shrink:0;display:flex;align-items:center;text-decoration:none}
+.nav-logo-img{height:22px;width:auto}
+@media(min-width:640px){.nav-logo-img{height:28px}}
+.nav-links{display:none;gap:1.5rem;margin-right:auto}
+@media(min-width:640px){.nav-links{display:flex}}
+.nav-links a{font-size:.875rem;font-weight:500;color:var(--text2);text-decoration:none}
+.nav-links a:hover,.nav-link-active{color:var(--text)}
+.nav-right{display:flex;align-items:center;gap:.75rem;margin-left:auto}
+.nav-login{font-size:.875rem;font-weight:500;color:var(--text2);text-decoration:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:.75rem 1.5rem;background:var(--primary);color:#fff;border:none;border-radius:var(--r);font-size:.9375rem;font-weight:600;font-family:var(--sans);cursor:pointer;text-decoration:none;box-shadow:var(--shadow-md);transition:all 200ms ease}
+.btn:hover{background:var(--primary-dark);box-shadow:var(--shadow-glow);transform:translateY(-1px)}
+.btn-nav{padding:.625rem 1.25rem;font-size:.8125rem}
+.btn-glow{background:linear-gradient(135deg,#7C3AED,#5B21B6);color:#fff;padding:1rem 2.5rem;border-radius:var(--r-xl);font-size:1rem;font-weight:600;box-shadow:var(--shadow-glow);text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+.btn-glow:hover{box-shadow:0 0 60px rgba(124,58,237,0.4);transform:translateY(-2px)}
+.hero-wrap{background:linear-gradient(180deg,#FFFFFF 0%,#F5F3FF 50%,#FAFAFA 100%);margin:-32px -16px 32px;padding:32px 16px}
+@media(min-width:640px){.hero-wrap{margin:-48px -48px 48px;padding:48px}}
+.hero{text-align:center;max-width:720px;margin:0 auto}
+.hero h1{font-size:clamp(24px,4vw,38px);font-weight:800;line-height:1.2;margin-bottom:12px}
+.hero h1 em{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:400}
+.hero p{font-size:16px;color:var(--text2)}
+@media(min-width:640px){.hero p{font-size:18px}}
+.tool{max-width:1100px;margin:0 auto 32px}
+@media(min-width:640px){.tool{margin-bottom:48px}}
+
+/* Two-column layout: builder left, preview right */
+.builder-layout{display:grid;grid-template-columns:1fr;gap:20px}
+@media(min-width:768px){.builder-layout{grid-template-columns:1fr 1.1fr;gap:32px;align-items:start}}
+@media(min-width:1200px){.builder-layout{gap:40px}}
+
+/* Left: the builder */
+.builder{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:24px}
+@media(min-width:640px){.builder{padding:36px}}
+
+/* Pill selectors */
+.pick-group{margin-bottom:28px}
+@media(min-width:640px){.pick-group{margin-bottom:32px}}
+.pick-group:last-of-type{padding-top:20px;border-top:1px solid var(--border-light);margin-bottom:0}
+.pick-label{font-size:14px;font-weight:600;margin-bottom:12px;display:flex;align-items:center;gap:8px;letter-spacing:-0.01em}
+.pick-num{width:24px;height:24px;border-radius:50%;background:var(--text);color:#fff;font-size:12px;font-weight:700;display:inline-flex;align-items:center;justify-content:center}
+.pick-grid{display:flex;flex-wrap:wrap;gap:8px}
+.pick-pill{padding:10px 20px;border-radius:999px;border:1px solid var(--border);background:var(--white);font-size:14px;font-weight:500;font-family:var(--sans);color:var(--text2);cursor:pointer;transition:all 200ms cubic-bezier(0.16,1,0.3,1);white-space:nowrap}
+.pick-pill:hover{border-color:var(--primary);background:var(--primary-faint);color:var(--text);transform:translateY(-1px)}
+.pick-pill.active{background:var(--primary);color:#fff;border-color:var(--primary);box-shadow:0 4px 14px rgba(124,58,237,0.35),0 0 0 3px rgba(124,58,237,0.08);transform:scale(1.03)}
+.pick-pill .pick-emoji{margin-right:4px}
+
+/* Text inputs */
+.builder-input{width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-size:14px;font-family:var(--sans);background:var(--white);color:var(--text);transition:all 150ms;margin-top:8px}
+.builder-input:focus{border-color:var(--primary);outline:none;box-shadow:0 0 0 3px rgba(124,58,237,0.1)}
+.builder-input::placeholder{color:var(--muted)}
+
+/* Toggles for advanced */
+.toggle-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.toggle-chip{padding:5px 12px;border-radius:999px;border:1px solid var(--border-light);background:var(--bg);font-size:11px;font-weight:500;font-family:var(--sans);color:var(--text2);cursor:pointer;transition:all 150ms}
+.toggle-chip.on{background:var(--primary-faint);color:var(--primary);border-color:var(--primary-ultra-light)}
+
+/* Right: the live preview */
+.preview{position:sticky;top:80px}
+@media(max-width:767px){.preview{position:static}}
+.preview-card{background:#0C0A14;border-radius:16px;overflow:hidden;border:1px solid rgba(124,58,237,0.15);box-shadow:0 24px 48px -12px rgba(0,0,0,0.25),0 0 0 1px rgba(124,58,237,0.06)}
+.preview-header{display:flex;align-items:center;gap:8px;padding:14px 20px;background:#13101E;border-bottom:1px solid rgba(124,58,237,0.1)}
+.preview-live{width:6px;height:6px;border-radius:50%;background:#6EE7B7;margin-right:4px;animation:pulse-live 2s ease infinite}
+@keyframes pulse-live{0%,100%{opacity:1}50%{opacity:0.3}}
+.preview-title{font-size:11px;color:rgba(167,139,250,0.5);font-family:var(--mono);letter-spacing:0.05em;text-transform:uppercase}
+.preview-body{padding:24px;min-height:300px;max-height:500px;overflow-y:auto}
+@media(min-width:640px){.preview-body{padding:24px;min-height:400px}}
+.preview-body pre{font-family:var(--mono);font-size:13px;color:#C4BFD6;white-space:pre-wrap;word-wrap:break-word;line-height:1.7;margin:0;transition:opacity 150ms}
+@media(min-width:640px){.preview-body pre{font-size:14px}}
+.preview-body pre.updating{opacity:0.4}
+.preview-body .hl-role{color:#A78BFA}
+.preview-body .hl-context{color:#93C5FD}
+.preview-body .hl-task{color:#E2D9F3}
+.preview-body .hl-constraint{color:#FB923C}
+.preview-body .hl-output{color:#6EE7B7}
+.preview-body .hl-var{color:#C084FC;font-weight:700}
+.preview-body .hl-comment{color:#5B4F7A;font-style:italic}
+.preview-actions{display:flex;gap:8px;padding:14px 20px;background:#13101E;border-top:1px solid rgba(124,58,237,0.1)}
+.preview-btn{padding:10px 16px;border-radius:8px;font-size:13px;font-weight:600;font-family:var(--sans);cursor:pointer;border:none;transition:all 150ms;flex:1;text-align:center}
+.preview-btn-copy{background:#7C3AED;color:#fff}
+.preview-btn-copy:hover{background:#6D28D9;box-shadow:0 0 20px rgba(124,58,237,0.3)}
+.preview-btn-alt{background:rgba(124,58,237,0.12);color:#A78BFA;text-decoration:none}
+.preview-btn-alt:hover{background:rgba(124,58,237,0.2)}
+@keyframes prompt-flash{0%{box-shadow:0 24px 48px -12px rgba(0,0,0,0.25),0 0 0 1px rgba(124,58,237,0.06)}50%{box-shadow:0 24px 48px -12px rgba(0,0,0,0.25),0 0 20px rgba(124,58,237,0.15)}100%{box-shadow:0 24px 48px -12px rgba(0,0,0,0.25),0 0 0 1px rgba(124,58,237,0.06)}}
+.preview-card.flash{animation:prompt-flash 400ms ease}
+
+/* Model tabs */
+.model-tabs{display:flex;gap:0;margin-bottom:0}
+.model-tab{padding:8px 16px;font-size:12px;font-weight:600;font-family:var(--sans);color:#999;cursor:pointer;border:none;background:transparent;border-bottom:2px solid transparent;transition:all 150ms}
+.model-tab.active{color:#D4D4D4;border-bottom-color:#7C3AED}
+
+/* Tip callout */
+.tip{background:var(--primary-faint);border-left:3px solid var(--primary);border-radius:0 8px 8px 0;padding:12px 14px;margin-top:16px;font-size:12px;color:var(--text2);line-height:1.5}
+.tip strong{color:var(--text);font-weight:700}
+
+/* Stats bar */
+.stats{display:flex;gap:12px;justify-content:center;margin-top:16px;flex-wrap:wrap}
+.stat{font-family:var(--mono);font-size:11px;color:var(--muted);display:flex;align-items:center;gap:4px}
+.stat-dot{width:6px;height:6px;border-radius:50%}
+
+/* CTA */
+.cta-hard{text-align:center;padding:2.5rem 1.5rem;background:#1F2937;border-radius:var(--r-xl);color:#fff;margin:32px auto;max-width:900px}
+@media(min-width:640px){.cta-hard{padding:3rem 2rem;border-radius:var(--r-2xl);margin:48px auto}}
+.cta-hard h3{font-size:20px;font-weight:700;margin-bottom:6px}
+.cta-hard h3 em{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:400}
+.cta-hard p{opacity:.8;margin-bottom:18px;font-size:14px}
+
+.section{margin:0 auto;padding:3rem 0;max-width:720px}
+@media(min-width:640px){.section{padding:4rem 0}}
+.section h2{font-size:20px;font-weight:700;margin-bottom:1.5rem}
+.section h2 em{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:400}
+.steps{display:grid;gap:20px}
+@media(min-width:640px){.steps{grid-template-columns:repeat(3,1fr);gap:24px}}
+.step{text-align:center;padding:16px 12px}
+.step-n{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:var(--primary-ultra-light);color:var(--primary);font-weight:700;font-size:15px;margin-bottom:10px}
+.step h3{font-size:14px;font-weight:600;margin-bottom:4px}
+.step p{font-size:13px;color:var(--text2)}
+
+.section.section-lavender{background:#F5F3FF;max-width:none;padding-left:16px;padding-right:16px;margin-left:-16px;margin-right:-16px}
+@media(min-width:640px){.section.section-lavender{margin-left:-48px;margin-right:-48px;padding-left:48px;padding-right:48px}}
+.section-lavender .section-inner{max-width:720px;margin:0 auto}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:1rem 0;cursor:pointer;font-size:14px;font-weight:600;background:none;border:none;width:100%;text-align:left;color:var(--text);font-family:var(--sans)}
+@media(min-width:640px){.faq-q{font-size:15px;padding:1.25rem 0}}
+.faq-q::after{content:'+';font-size:18px;color:var(--muted);margin-left:12px}
+.faq-q.open::after{content:'\2212'}
+.faq-a{padding:0 0 1rem;font-size:13px;color:var(--text2);line-height:1.7;display:none}
+.faq-a.open{display:block}
+.related{display:grid;gap:10px}
+@media(min-width:640px){.related{grid-template-columns:repeat(3,1fr);gap:14px}}
+.related a{padding:1rem;border:1px solid var(--border-light);border-radius:var(--r-xl);text-decoration:none;color:var(--text);background:var(--white);transition:all 300ms ease}
+.related a:hover{border-color:var(--primary-light);box-shadow:var(--shadow-lg);transform:translateY(-2px)}
+.related h4{font-size:14px;font-weight:600;margin-bottom:2px}
+.related p{font-size:12px;color:var(--text2)}
+.footer{border-top:1px solid var(--border);padding:24px 0;margin-top:4rem;text-align:center;font-size:13px;color:var(--muted)}
+.footer a{color:var(--primary);text-decoration:none}
+/* Mobile prompt button */
+.mobile-show-prompt{display:none}
+@media(max-width:767px){
+  .mobile-show-prompt{display:block;width:100%;padding:14px;background:linear-gradient(135deg,#7C3AED,#5B21B6);color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;font-family:var(--sans);cursor:pointer;margin-top:16px;box-shadow:0 0 30px rgba(124,58,237,0.25);transition:all 200ms}
+  .mobile-show-prompt:hover{box-shadow:0 0 50px rgba(124,58,237,0.4);transform:translateY(-1px)}
+}
+@media(max-width:479px){.cta-hard{padding:2rem 1.25rem}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="https://overloop.com" class="nav-logo"><img src="https://cdn.prod.website-files.com/6836b1fcfa0b25a3fed39db6/69d4cb02974de95cb4df5bd0_Logotype%20-%20Black.png" alt="Overloop" class="nav-logo-img"></a>
+  <div class="nav-links"><a href="https://overloop.com/features">Features</a><a href="https://overloop.com/pricing">Pricing</a><a href="/" class="nav-link-active">Free tools</a></div>
+  <div class="nav-right"><a href="https://app.overloop.ai/session/login" class="nav-login">Login</a><a href="https://app.overloop.ai/session/signup" class="btn btn-nav">Sign up free</a></div>
+</nav>
+<div class="page">
+<div class="hero-wrap"><div class="hero">
+  <h1>AI prompt builder for <em>cold email</em></h1>
+  <p>An AI prompt builder generates structured prompts for ChatGPT or Claude, optimized for sales outreach. Pick your goal, target, channel. Get a 7-part prompt that gets 2-3x better replies than "write me a cold email."</p>
+</div></div>
+
+<div class="tool">
+  <div class="builder-layout">
+    <!-- LEFT: Builder -->
+    <div class="builder">
+      <div class="pick-group">
+        <div class="pick-label"><span class="pick-num">1</span> What's your goal?</div>
+        <div class="pick-grid" id="goalPicks">
+          <button class="pick-pill active" data-v="book_meetings" onclick="pick('goal',this)"><span class="pick-emoji">📅</span>Book meetings</button>
+          <button class="pick-pill" data-v="get_partnerships" onclick="pick('goal',this)"><span class="pick-emoji">🤝</span>Partnerships</button>
+          <button class="pick-pill" data-v="follow_up" onclick="pick('goal',this)"><span class="pick-emoji">🔄</span>Follow up</button>
+          <button class="pick-pill" data-v="recruit" onclick="pick('goal',this)"><span class="pick-emoji">👋</span>Recruit</button>
+          <button class="pick-pill" data-v="event_invite" onclick="pick('goal',this)"><span class="pick-emoji">🎤</span>Event invite</button>
+          <button class="pick-pill" data-v="re_engage" onclick="pick('goal',this)"><span class="pick-emoji">🔙</span>Re-engage</button>
+        </div>
+      </div>
+
+      <div class="pick-group">
+        <div class="pick-label"><span class="pick-num">2</span> Who are you targeting?</div>
+        <div class="pick-grid" id="rolePicks">
+          <button class="pick-pill active" data-v="vp_sales" onclick="pick('role',this)">VP Sales</button>
+          <button class="pick-pill" data-v="ceo" onclick="pick('role',this)">CEO / Founder</button>
+          <button class="pick-pill" data-v="cto" onclick="pick('role',this)">CTO</button>
+          <button class="pick-pill" data-v="cmo" onclick="pick('role',this)">CMO / Head of Marketing</button>
+          <button class="pick-pill" data-v="hr" onclick="pick('role',this)">HR / Talent</button>
+          <button class="pick-pill" data-v="ops" onclick="pick('role',this)">Ops / RevOps</button>
+          <button class="pick-pill" data-v="custom_role" onclick="pick('role',this)">Custom...</button>
+        </div>
+        <input type="text" class="builder-input" id="customRole" placeholder="e.g., Head of Procurement" style="display:none" oninput="generate()">
+      </div>
+
+      <div class="pick-group">
+        <div class="pick-label"><span class="pick-num">3</span> What channel?</div>
+        <div class="pick-grid" id="channelPicks">
+          <button class="pick-pill active" data-v="cold_email" onclick="pick('channel',this)"><span class="pick-emoji">✉️</span>Cold email</button>
+          <button class="pick-pill" data-v="linkedin_connect" onclick="pick('channel',this)"><span class="pick-emoji">💼</span>LinkedIn connect</button>
+          <button class="pick-pill" data-v="linkedin_dm" onclick="pick('channel',this)"><span class="pick-emoji">💬</span>LinkedIn DM</button>
+          <button class="pick-pill" data-v="follow_up_email" onclick="pick('channel',this)"><span class="pick-emoji">↩️</span>Follow-up email</button>
+          <button class="pick-pill" data-v="breakup_email" onclick="pick('channel',this)"><span class="pick-emoji">👋</span>Breakup email</button>
+        </div>
+      </div>
+
+      <div class="pick-group">
+        <div class="pick-label"><span class="pick-num">4</span> Your product / service</div>
+        <input type="text" class="builder-input" id="productInput" placeholder="e.g., AI-powered outbound platform that books meetings" oninput="generate()" value="" style="margin-top:0">
+      </div>
+
+      <div class="pick-group">
+        <div class="pick-label"><span class="pick-num">5</span> Industry (optional)</div>
+        <div class="pick-grid" id="industryPicks">
+          <button class="pick-pill active" data-v="any" onclick="pick('industry',this)">Any</button>
+          <button class="pick-pill" data-v="saas" onclick="pick('industry',this)">SaaS</button>
+          <button class="pick-pill" data-v="agency" onclick="pick('industry',this)">Agency</button>
+          <button class="pick-pill" data-v="fintech" onclick="pick('industry',this)">Fintech</button>
+          <button class="pick-pill" data-v="ecom" onclick="pick('industry',this)">E-commerce</button>
+          <button class="pick-pill" data-v="healthcare" onclick="pick('industry',this)">Healthcare</button>
+        </div>
+      </div>
+
+      <div class="pick-group" style="margin-bottom:0">
+        <div class="pick-label" style="margin-bottom:4px">Fine-tune (optional)</div>
+        <div class="toggle-row" id="toggles">
+          <button class="toggle-chip on" data-t="no_spam" onclick="toggle(this)">No spam words</button>
+          <button class="toggle-chip on" data-t="short" onclick="toggle(this)">Keep it short (50-125 words)</button>
+          <button class="toggle-chip on" data-t="question_cta" onclick="toggle(this)">End with a question</button>
+          <button class="toggle-chip" data-t="social_proof" onclick="toggle(this)">Add social proof</button>
+          <button class="toggle-chip" data-t="competitor" onclick="toggle(this)">Competitor displacement</button>
+          <button class="toggle-chip" data-t="humor" onclick="toggle(this)">Light humor</button>
+          <button class="toggle-chip" data-t="data_driven" onclick="toggle(this)">Data-driven</button>
+          <button class="toggle-chip" data-t="personalization" onclick="toggle(this)">Deep personalization</button>
+        </div>
+      </div>
+
+      <!-- Mobile: show prompt button -->
+      <button class="mobile-show-prompt" id="mobileShowBtn" onclick="document.querySelector('.preview').scrollIntoView({behavior:'smooth',block:'start'})">See my prompt ↓</button>
+
+      <div class="tip"><strong>This uses the 7-part expert framework:</strong> Task → Context → Reference (good + bad example) → Success Brief (how the reader should feel) → Rules → Conversation (AI asks before writing) → Output format. Each part makes the output dramatically better. Claude prompts use XML tags for maximum precision.</div>
+    </div>
+
+    <!-- RIGHT: Live preview (terminal style) -->
+    <div class="preview">
+      <div class="preview-card">
+        <div class="preview-header">
+          <div class="preview-live"></div>
+          <div class="preview-title">prompt.txt — live</div>
+        </div>
+        <div class="model-tabs">
+          <button class="model-tab active" onclick="setModel('chatgpt',this)">ChatGPT</button>
+          <button class="model-tab" onclick="setModel('claude',this)">Claude</button>
+        </div>
+        <div class="preview-body"><pre id="promptOutput"></pre></div>
+        <div class="preview-actions">
+          <button class="preview-btn preview-btn-copy" onclick="copyPrompt()">Copy prompt</button>
+          <a href="https://app.overloop.ai/session/signup" class="preview-btn preview-btn-alt" style="text-decoration:none">Try in Overloop →</a>
+        </div>
+      </div>
+      <div class="stats" id="stats"></div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="max-width:720px">
+  <h2>How to write an AI prompt for <em>cold email</em></h2>
+  <ol style="font-size:14px;color:var(--text2);line-height:1.7;padding-left:20px;display:flex;flex-direction:column;gap:12px">
+    <li><strong style="color:var(--text)">Define the task and target.</strong> Tell the AI what type of email (cold email, follow-up, LinkedIn DM) and who the recipient is (VP Sales, CEO, CTO). Generic prompts produce generic emails.</li>
+    <li><strong style="color:var(--text)">Add constraints and reference examples.</strong> Include a good example and a bad example. Set word count (50-125 for cold email). Ban spam words. These constraints separate a 2% reply rate from 12%.</li>
+    <li><strong style="color:var(--text)">Use the 7-part framework: Task, Context, Reference, Success Brief, Rules, Conversation, Output.</strong> This forces the AI to understand what success looks like. The Conversation step — where the AI proposes its angle before writing — is the quality lever most people skip.</li>
+  </ol>
+</div>
+
+<div class="section" style="max-width:720px">
+  <h2>Cold email benchmarks: <em>what the data says</em></h2>
+  <ul style="font-size:14px;color:var(--text2);line-height:1.7;padding-left:20px;display:flex;flex-direction:column;gap:8px">
+    <li><strong style="color:var(--text)">Structured vs generic prompts:</strong> Emails from the 7-part framework get 2-3x higher reply rates than "write me a cold email" prompts.</li>
+    <li><strong style="color:var(--text)">Optimal length:</strong> 50-125 words. Under 50 lacks context. Over 125, reply rates drop 40%.</li>
+    <li><strong style="color:var(--text)">Question CTAs vs statements:</strong> Ending with a question increases replies by 14%.</li>
+    <li><strong style="color:var(--text)">Subject lines:</strong> Under 5 words, lowercase, outperform longer title-case subjects.</li>
+  </ul>
+  <p style="font-size:12px;color:var(--muted);margin-top:12px"><strong>Methodology:</strong> Based on testing 500+ prompt variations across 200+ B2B outbound campaigns run through Overloop.</p>
+</div>
+
+<div class="section" style="max-width:900px">
+  <h2>Why structured prompts write better <em>cold emails</em></h2>
+  <div class="steps">
+    <div class="step"><div class="step-n">1</div><h3>7-part expert framework</h3><p>Task, Context, Reference, Success Brief, Rules, Conversation, Output. Each section makes the AI output dramatically better. This is how prompt engineers actually work.</p></div>
+    <div class="step"><div class="step-n">2</div><h3>Good + bad examples baked in</h3><p>Every prompt includes a reference email the AI should match AND a bad example to avoid. Few-shot examples are the single biggest quality lever in prompting.</p></div>
+    <div class="step"><div class="step-n">3</div><h3>AI asks before writing</h3><p>The prompt tells the AI to propose its angle and wait for your approval. You stay in control. The AI collaborates instead of guessing.</p></div>
+  </div>
+</div>
+
+<div class="section section-lavender"><div class="section-inner">
+  <h2>Questions we get <em>every day</em></h2>
+  <div class="faq-item"><button class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">ChatGPT or Claude for cold email?</button><div class="faq-a">Claude produces better cold email tone out of the box — casual and professional without heavy constraint-stacking. ChatGPT is better for research and data extraction. The best approach: use ChatGPT for prospect research, Claude for writing the actual email. This prompt works with both.</div></div>
+  <div class="faq-item"><button class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Why not just ask "write me a cold email"?</button><div class="faq-a">Because AI models optimize for whatever you ask. "Write a cold email" = generic, formal, long. A structured prompt with role, constraints, and specific instructions = sharp, short, human. The difference in output quality is 10x. The prompt IS the product.</div></div>
+  <div class="faq-item"><button class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How many prompts do I actually need?</button><div class="faq-a">10, not 35. One per channel (cold email, LinkedIn connect, LinkedIn DM, follow-up, breakup) × 2 goals. This builder generates the exact prompt for each combination. Quality over quantity.</div></div>
+  <div class="faq-item"><button class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">What's the Role + Context + Task + Constraints framework?</button><div class="faq-a">It's the structure that gets the best output from AI. Role = who the AI is pretending to be. Context = background on the situation. Task = what to produce. Constraints = rules for the output. Without this structure, AI defaults to generic, formal, and long — the opposite of what works in cold email.</div></div>
+  <div class="faq-item"><button class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Is this free?</button><div class="faq-a">Yes. Build and copy as many prompts as you want. No signup, no limits.</div></div>
+</div></div>
+
+<div class="section" style="max-width:900px">
+  <h2>More free tools</h2>
+  <div class="related">
+    <a href="../spam-checker/"><h4>Email spam checker</h4><p>Score your AI-generated email on 7 dimensions before sending.</p></a>
+    <a href="../playbooks/"><h4>Outbound playbooks</h4><p>14 industry strategies with templates and sequences.</p></a>
+    <a href="../"><h4>ROI calculator</h4><p>Will cold email work for you? See the numbers.</p></a>
+  </div>
+</div>
+
+<div class="cta-hard">
+  <h3>Prompt built. Email written. Time to <em>send.</em></h3>
+  <p>Overloop runs your outbound: email + LinkedIn, AI sequences, built-in warmup.</p>
+  <a href="https://app.overloop.ai/session/signup" class="btn-glow">Try Overloop free</a>
+</div>
+<footer class="footer"><a href="https://overloop.com">Overloop</a> — AI-powered outbound sales platform</footer>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+let state={goal:'book_meetings',role:'vp_sales',channel:'cold_email',product:'',industry:'any',model:'chatgpt',toggles:{no_spam:true,short:true,question_cta:true,social_proof:false,competitor:false,humor:false,data_driven:false,personalization:false}};
+
+function pick(field,btn){
+  btn.parentElement.querySelectorAll('.pick-pill').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  state[field]=btn.dataset.v;
+  if(field==='role'){$('customRole').style.display=state.role==='custom_role'?'block':'none';}
+  // Prevent scroll jump on mobile — keep user in the builder
+  const scrollY=window.scrollY;
+  generate();
+  if(window.innerWidth<768)window.scrollTo(0,scrollY);
+}
+function toggle(btn){
+  btn.classList.toggle('on');
+  state.toggles[btn.dataset.t]=btn.classList.contains('on');
+  const scrollY=window.scrollY;
+  generate();
+  if(window.innerWidth<768)window.scrollTo(0,scrollY);
+}
+function setModel(m,btn){state.model=m;document.querySelectorAll('.model-tab').forEach(t=>t.classList.remove('active'));btn.classList.add('active');generate();}
+
+const GOALS={book_meetings:'Write a cold email to book a discovery meeting.',get_partnerships:'Write a cold email to propose a partnership or collaboration.',follow_up:'Write a follow-up email to someone who didn\'t reply to my initial outreach.',recruit:'Write a recruiting outreach email to attract a passive candidate.',event_invite:'Write an email inviting someone to a webinar, podcast, or conference meeting.',re_engage:'Write an email to re-engage a churned customer, lost deal, or inactive lead.'};
+const ROLES={vp_sales:'VP of Sales',ceo:'CEO or Founder',cto:'CTO or VP Engineering',cmo:'CMO or Head of Marketing',hr:'Head of HR or Talent Acquisition',ops:'VP Operations or RevOps',custom_role:'[specified role]'};
+const CHANNELS={cold_email:{type:'cold email',len:'50-125 words',notes:''},linkedin_connect:{type:'LinkedIn connection request note',len:'under 300 characters',notes:'LinkedIn connection notes are limited to 300 characters. Be extremely concise. One sentence about why you\'re connecting. No pitch.'},linkedin_dm:{type:'LinkedIn direct message',len:'under 100 words',notes:'LinkedIn DMs should feel like a text, not an email. Short, casual, conversational. No "Dear" or "Best regards."'},follow_up_email:{type:'follow-up email',len:'under 75 words',notes:'Reference the previous email briefly. Add new value or a different angle. Don\'t repeat the first email. Be shorter than the original.'},breakup_email:{type:'breakup email (last in sequence)',len:'under 50 words',notes:'This is the final email. Be direct: "Should I close your file?" No guilt-tripping. Respect their time. Often gets the highest reply rate.'}};
+const INDUSTRIES={any:'',saas:'B2B SaaS',agency:'marketing or digital agency',fintech:'fintech',ecom:'B2B e-commerce',healthcare:'healthcare'};
+
+function generate(){
+  const g=GOALS[state.goal]||GOALS.book_meetings;
+  const r=state.role==='custom_role'?($('customRole').value||'decision-maker'):ROLES[state.role];
+  const ch=CHANNELS[state.channel]||CHANNELS.cold_email;
+  const product=state.product||'[describe your product/service here]';
+  const ind=INDUSTRIES[state.industry];
+  const t=state.toggles;
+
+  let constraints=[];
+  if(t.no_spam)constraints.push('Do NOT use these words: guaranteed, free, amazing, incredible, innovative, revolutionary, leverage, cutting-edge, click here, act now, limited time, urgent');
+  constraints.push(`Keep it ${ch.len}`);
+  if(t.short&&ch.type==='cold email')constraints.push('50-125 words is the sweet spot. Every word must earn its place');
+  if(t.question_cta)constraints.push('End with a single question as the CTA. Questions get 14% higher reply rates than statements');
+  if(t.social_proof)constraints.push('Include one specific proof point: a customer name, a metric, or a result. "We helped X achieve Y" not "we help companies"');
+  if(t.competitor)constraints.push('Reference a competitor or industry shift. "Companies like [competitor\'s client] are switching because [reason]"');
+  if(t.humor)constraints.push('Add a touch of dry humor or wit. Not a joke — a clever observation. The kind that makes someone smirk, not cringe');
+  if(t.data_driven)constraints.push('Lead with a specific data point, benchmark, or stat. Numbers in the opening line increase reply rates by 20%');
+  if(t.personalization)constraints.push('The email MUST reference something specific about the prospect: a recent post, a job listing, a funding round, a product launch. Generic = deleted');
+  constraints.push('No "I hope this finds you well." No "I wanted to reach out." No exclamation points. Write like a human texting a colleague, not a marketer writing a campaign');
+  constraints.push('Subject line: under 5 words. Lowercase. Personal. Not clickbait');
+
+  // Good/bad reference examples per channel
+  const goodExamples={
+    cold_email:`Subject: quick question
+
+Hi Sarah,
+
+I noticed Acme just posted 3 SDR roles. Hiring takes 4 months. Cold email fills the pipeline in 3 weeks.
+
+We run outbound for 200+ B2B companies. Average: 18 meetings/month, zero ad spend.
+
+Worth a 15-min call this week?
+
+John`,
+    linkedin_connect:`Saw your post on scaling outbound at Acme. Thought it'd be worth connecting.`,
+    linkedin_dm:`Hey Sarah — noticed Acme is scaling the sales team. We help companies like yours book 18+ meetings/mo through cold email. Worth comparing notes?`,
+    follow_up_email:`Subject: re: quick question
+
+Hi Sarah,
+
+Just floating this back up. Would a 15-min call this week make sense?
+
+John`,
+    breakup_email:`Subject: should I close your file?
+
+Hi Sarah,
+
+I've reached out a couple times. If outbound isn't a priority for Acme right now, no worries. If it ever is, I'm easy to find.
+
+John`
+  };
+  const badExample=`Subject: Amazing Opportunity for Your Company!!!
+
+Dear Sir/Madam,
+
+I hope this email finds you well! I'm reaching out because I believe our innovative, cutting-edge solution could help transform your business. We offer guaranteed results and a free trial.
+
+Click here to learn more: https://example.com/demo
+
+Don't miss this limited time offer!
+
+Best regards,
+Sales Team`;
+
+  const goodRef=goodExamples[state.channel]||goodExamples.cold_email;
+
+  let prompt='';
+  if(state.model==='chatgpt'){
+    prompt=`<span class="hl-comment"># 1. Task</span>
+<span class="hl-task">${g}${ch.notes?'\n\n'+ch.notes:''}
+Success = the recipient reads the full email and replies. Not opens — replies.</span>
+
+<span class="hl-comment"># 2. Context</span>
+<span class="hl-context">My product: <span class="hl-var">${product}</span>
+Target: <span class="hl-var">${r}</span>${ind?' at '+ind+' companies':''}
+Channel: <span class="hl-var">${ch.type}</span></span>
+
+<span class="hl-comment"># 3. Reference — here's what GOOD looks like</span>
+<span class="hl-output">${goodRef}</span>
+
+<span class="hl-comment">Why this works: short (under 80 words), opens with a specific observation about the prospect, includes one proof point, ends with a low-commitment question. No fluff, no links, no spam words.</span>
+
+<span class="hl-comment">Here's what BAD looks like (never do this):</span>
+<span class="hl-constraint">${badExample}</span>
+
+<span class="hl-comment"># 4. Success brief</span>
+<span class="hl-task">The reader should feel: "this person did their homework and might actually be useful."
+The reader should NOT feel: "this is a mass email" or "this person wants to sell me something."
+Tone: a smart colleague texting you, not a marketer writing a campaign.</span>
+
+<span class="hl-comment"># 5. Rules (non-negotiable)</span>
+<span class="hl-constraint">${constraints.map((c,i)=>`${i+1}. ${c}`).join('\n')}</span>
+
+<span class="hl-comment"># 6. Before writing, tell me:</span>
+<span class="hl-role">- What specific angle are you going to use and why?
+- What's the one thing the reader will remember?
+Wait for my approval before writing the email.</span>
+
+<span class="hl-comment"># 7. Output format</span>
+<span class="hl-output">Subject: [lowercase, under 5 words, personal]
+
+[email body — ${ch.len}]</span>`;
+  }else{
+    prompt=`<span class="hl-comment">&lt;task&gt;</span>
+<span class="hl-task">${g}${ch.notes?'\n'+ch.notes:''}
+Success = the recipient replies. Not opens. Replies.</span>
+<span class="hl-comment">&lt;/task&gt;</span>
+
+<span class="hl-comment">&lt;context&gt;</span>
+<span class="hl-context">Product: <span class="hl-var">${product}</span>
+Target: <span class="hl-var">${r}</span>${ind?' at '+ind+' companies':''}
+Channel: <span class="hl-var">${ch.type}</span></span>
+<span class="hl-comment">&lt;/context&gt;</span>
+
+<span class="hl-comment">&lt;reference&gt;</span>
+<span class="hl-comment">Good example (match this tone and length):</span>
+<span class="hl-output">${goodRef}</span>
+
+<span class="hl-comment">Bad example (never do this):</span>
+<span class="hl-constraint">${badExample}</span>
+<span class="hl-comment">&lt;/reference&gt;</span>
+
+<span class="hl-comment">&lt;success_brief&gt;</span>
+<span class="hl-task">Reader should feel: "this person did their homework."
+Reader should NOT feel: "mass email" or "sales pitch."
+Tone: smart colleague, not marketer.</span>
+<span class="hl-comment">&lt;/success_brief&gt;</span>
+
+<span class="hl-comment">&lt;rules&gt;</span>
+<span class="hl-constraint">${constraints.map(c=>`- ${c}`).join('\n')}</span>
+<span class="hl-comment">&lt;/rules&gt;</span>
+
+<span class="hl-comment">&lt;conversation&gt;</span>
+<span class="hl-role">Before writing, tell me:
+1. What angle will you use and why?
+2. What's the one thing the reader will remember?
+Wait for my OK before writing.</span>
+<span class="hl-comment">&lt;/conversation&gt;</span>
+
+<span class="hl-comment">&lt;output&gt;</span>
+<span class="hl-output">Subject: [lowercase, under 5 words]
+[body — ${ch.len}]</span>
+<span class="hl-comment">&lt;/output&gt;</span>`;
+  }
+
+  const pre=$('promptOutput');
+  const card=document.querySelector('.preview-card');
+  pre.classList.add('updating');
+  card.classList.remove('flash');
+  requestAnimationFrame(()=>{
+    pre.innerHTML=prompt;
+    pre.classList.remove('updating');
+    card.classList.add('flash');
+    card.addEventListener('animationend',()=>card.classList.remove('flash'),{once:true});
+  });
+  // DON'T auto-scroll on mobile — let user finish picking, then scroll manually
+
+  // Stats
+  const plainText=prompt.replace(/<[^>]+>/g,'');
+  const words=plainText.split(/\s+/).filter(w=>w).length;
+  const constraintCount=constraints.length;
+  $('stats').innerHTML=`
+    <div class="stat"><div class="stat-dot" style="background:var(--primary)"></div>7-part framework</div>
+    <div class="stat"><div class="stat-dot" style="background:var(--ok)"></div>${constraintCount} rules</div>
+    <div class="stat"><div class="stat-dot" style="background:var(--warn)"></div>${state.model==='chatgpt'?'ChatGPT':'Claude'} ${state.model==='claude'?'(XML tags)':'(markdown)'}</div>
+    <div class="stat"><div class="stat-dot" style="background:#0A66C2"></div>good + bad examples</div>
+  `;
+}
+
+function copyPrompt(){
+  const text=$('promptOutput').textContent;
+  navigator.clipboard.writeText(text).then(()=>{
+    const btn=document.querySelector('.preview-btn-copy');
+    btn.textContent='Copied!';
+    setTimeout(()=>btn.textContent='Copy prompt',2000);
+  });
+}
+
+$('productInput').addEventListener('input',()=>{state.product=$('productInput').value;generate();});
+generate();
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"AI Prompt Builder for Cold Email","applicationCategory":"BusinessApplication","operatingSystem":"Web","url":"https://tools.overloop.com/prompt-builder/","datePublished":"2026-04-08","author":{"@type":"Organization","name":"Overloop","url":"https://overloop.com"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Should I use ChatGPT or Claude for writing cold emails?","acceptedAnswer":{"@type":"Answer","text":"Claude produces better cold email tone out of the box. ChatGPT is better for prospect research. Best approach: ChatGPT for research, Claude for writing. Both work with structured prompts, but Claude's XML tag support gives more precise control."}},{"@type":"Question","name":"Why does a structured prompt work better than asking ChatGPT to write a cold email?","acceptedAnswer":{"@type":"Answer","text":"AI models optimize for whatever instructions you provide. 'Write me a cold email' produces generic, formal, long output. A structured prompt with role, constraints, and reference examples produces sharp, short, human output. The reply rate difference is typically 2-3x."}},{"@type":"Question","name":"How many AI prompts do I need for cold outreach?","acceptedAnswer":{"@type":"Answer","text":"10, not 35. One per channel (cold email, LinkedIn connect, LinkedIn DM, follow-up, breakup) times 2 goals. Quality over quantity."}},{"@type":"Question","name":"What is the 7-part prompt framework for sales emails?","acceptedAnswer":{"@type":"Answer","text":"Task (what to do), Context (product and target), Reference (good and bad example), Success Brief (how reader should feel), Rules (constraints), Conversation (AI proposes angle first), Output (format). Each section measurably improves email quality."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"How to build an AI prompt for cold email","description":"Generate a structured ChatGPT or Claude prompt for cold email outreach in 30 seconds.","step":[{"@type":"HowToStep","position":1,"name":"Pick your goal and target","text":"Select outreach goal and target role. Choose channel: cold email, LinkedIn, follow-up, or breakup."},{"@type":"HowToStep","position":2,"name":"Add product and fine-tune","text":"Describe your product. Toggle constraints: no spam words, short length, question CTA, social proof."},{"@type":"HowToStep","position":3,"name":"Copy into ChatGPT or Claude","text":"The builder generates a 7-part prompt optimized for your AI model. Copy, paste, and the AI proposes an angle before writing."}],"tool":{"@type":"HowToTool","name":"ChatGPT or Claude"}}</script>
+</body>
+</html>

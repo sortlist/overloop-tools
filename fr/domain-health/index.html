@@ -32,7 +32,7 @@ body{font-family:var(--sans);color:var(--text);background:var(--bg);line-height:
 .btn{display:inline-flex;align-items:center;justify-content:center;padding:.75rem 1.5rem;background:var(--primary);color:#fff;border:none;border-radius:var(--r);font-size:.9375rem;font-weight:600;font-family:var(--sans);cursor:pointer;text-decoration:none;box-shadow:var(--shadow-md);transition:all 200ms ease}
 .btn:hover{background:var(--primary-dark);box-shadow:var(--shadow-glow);transform:translateY(-1px)}
 .btn-nav{padding:.5rem 1.25rem;font-size:.8125rem}
-.btn-glow{background:linear-gradient(135deg,#7C3AED,#5B21B6);padding:1rem 2.5rem;border-radius:var(--r-xl);font-size:1rem;box-shadow:var(--shadow-glow)}
+.btn-glow{display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#7C3AED,#5B21B6);color:#fff;padding:1rem 2.5rem;border:none;border-radius:var(--r-xl);font-size:1rem;font-weight:600;font-family:var(--sans);cursor:pointer;text-decoration:none;box-shadow:var(--shadow-glow);transition:all 200ms ease}
 .hero-wrap{background:linear-gradient(180deg,#FFFFFF 0%,#F5F3FF 50%,#FAFAFA 100%);margin:-32px -16px 32px;padding:32px 16px}
 @media(min-width:640px){.hero-wrap{margin:-48px -48px 48px;padding:48px}}
 .hero{text-align:center;max-width:720px;margin:0 auto}
@@ -238,12 +238,24 @@ async function runCheck(){
 
   const checks=[];
 
+  // Detect mail provider from MX records
+  const mxData=(mxRecords||[]).map(r=>(r.data||'').toLowerCase()).join(' ');
+  const providerMap=[
+    {name:'Google Workspace',mxMatch:/google|gmail|aspmx/,spfInclude:'_spf.google.com'},
+    {name:'Microsoft 365',mxMatch:/outlook|microsoft|protection\.outlook/,spfInclude:'spf.protection.outlook.com'},
+    {name:'Zoho',mxMatch:/zoho/,spfInclude:'zoho.com'},
+    {name:'ProtonMail',mxMatch:/proton/,spfInclude:'_spf.protonmail.ch'},
+  ];
+  const detectedProvider=providerMap.find(p=>p.mxMatch.test(mxData));
+
   // 1. SPF
   const spfTxt=spfRecords.filter(r=>r.data&&r.data.toLowerCase().includes('v=spf1'));
   if(spfTxt.length>0){
     const record=spfTxt[0].data.replace(/"/g,'');
+    const recordLower=record.toLowerCase();
     const lookups=(record.match(/include:|a:|mx:|redirect=/g)||[]).length;
     const hasAll=record.includes('-all')||record.includes('~all');
+    const providerMissing=detectedProvider&&!recordLower.includes(detectedProvider.spfInclude);
     if(lookups>10){
       checks.push({name:'SPF',status:'warn',icon:'⚠️',statusText:'ATTENTION',record,
         detail:`Enregistrement SPF trouvé mais avec ${lookups} consultations DNS. La limite est de 10. Les emails peuvent échouer aux vérifications SPF de façon intermittente.`,
@@ -252,14 +264,21 @@ async function runCheck(){
       checks.push({name:'SPF',status:'warn',icon:'⚠️',statusText:'FAIBLE',record,
         detail:'Enregistrement SPF trouvé mais ne se termine pas par -all ou ~all. N\'importe qui peut envoyer des emails depuis votre domaine.',
         fix:'Ajoutez ~all (softfail) ou -all (hardfail) à la fin de votre enregistrement SPF. ~all est recommandé pour le cold email.'});
+    }else if(providerMissing){
+      checks.push({name:'SPF',status:'warn',icon:'⚠️',statusText:'INCOMPLET',record,
+        detail:`L'enregistrement SPF est syntaxiquement valide, mais vos MX pointent vers ${detectedProvider.name} et votre SPF n'inclut pas ${detectedProvider.spfInclude}. Les emails envoyés via ${detectedProvider.name} échoueront probablement aux vérifications SPF.`,
+        fix:`Ajoutez include:${detectedProvider.spfInclude} à votre enregistrement SPF :\nv=spf1 include:${detectedProvider.spfInclude} ${record.match(/include:[^\s]+/g)?.join(' ')||''} ~all`});
     }else{
+      const extra=detectedProvider?` Inclut ${detectedProvider.name} (correspond à vos MX).`:'';
       checks.push({name:'SPF',status:'pass',icon:'✓',statusText:'OK',record,
-        detail:`Enregistrement SPF valide. ${lookups} consultations DNS (limite : 10). Se termine par ${record.includes('-all')?'-all (strict)':'~all (souple)'}.`,fix:''});
+        detail:`Enregistrement SPF valide. ${lookups} consultations DNS (limite : 10). Se termine par ${record.includes('-all')?'-all (strict)':'~all (souple)'}.${extra}`,fix:''});
     }
   }else{
+    const suggestedInclude=detectedProvider?detectedProvider.spfInclude:'_spf.google.com';
+    const providerNote=detectedProvider?`D'après vos MX (${detectedProvider.name}), utilisez :`:'Exemple pour Google Workspace :';
     checks.push({name:'SPF',status:'fail',icon:'✗',statusText:'ABSENT',record:'',
       detail:'Aucun enregistrement SPF trouvé. Les fournisseurs email ne peuvent pas vérifier que les emails de ce domaine sont légitimes.',
-      fix:'Ajoutez cet enregistrement TXT à votre DNS :\nv=spf1 include:_spf.google.com ~all\n\nRemplacez _spf.google.com par le SPF include de votre fournisseur email.'});
+      fix:`Ajoutez cet enregistrement TXT à votre DNS :\n${providerNote}\nv=spf1 include:${suggestedInclude} ~all`});
   }
 
   // 2. DKIM
